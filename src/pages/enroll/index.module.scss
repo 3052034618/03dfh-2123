@@ -109,6 +109,26 @@
   white-space: nowrap;
 }
 
+.publisherBox {
+  display: flex;
+  align-items: center;
+  padding: $spacing-sm $spacing-md;
+  background: $color-pending-bg;
+  border-radius: $radius-sm;
+  margin-bottom: $spacing-md;
+}
+
+.publisherLabel {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.publisherName {
+  font-size: $font-size-md;
+  color: $color-pending-text;
+  font-weight: $font-weight-semibold;
+}
+
 .detailInfo {
   margin-bottom: $spacing-md;
 }

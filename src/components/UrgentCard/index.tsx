@@ -18,6 +18,12 @@ const UrgentCard: React.FC<UrgentCardProps> = ({ game, onClick }) => {
           <Text className={styles.typeTagText}>{game.scriptType}</Text>
         </View>
       </View>
+      {game.publisherName && (
+        <View className={styles.publisherRow}>
+          <Text className={styles.publisherLabel}>发布人</Text>
+          <Text className={styles.publisherName}>{game.publisherName}</Text>
+        </View>
+      )}
       <View className={styles.cardBody}>
         <View className={styles.infoRow}>
           <Text className={styles.infoLabel}>场次</Text>

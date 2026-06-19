@@ -4,6 +4,7 @@ export const mockGames: UrgentGame[] = [
   {
     id: 'g1',
     scriptName: '年轮',
+    publisherName: '小敏',
     sessionTime: '14:00',
     playerGap: 2,
     genderPreference: '女',
@@ -22,6 +23,7 @@ export const mockGames: UrgentGame[] = [
   {
     id: 'g2',
     scriptName: '病娇男孩的精分日记',
+    publisherName: '阿凯',
     sessionTime: '19:30',
     playerGap: 3,
     genderPreference: '不限',
@@ -40,6 +42,7 @@ export const mockGames: UrgentGame[] = [
   {
     id: 'g3',
     scriptName: '阵营之光',
+    publisherName: '小敏',
     sessionTime: '14:00',
     playerGap: 1,
     genderPreference: '男',
@@ -58,6 +61,7 @@ export const mockGames: UrgentGame[] = [
   {
     id: 'g4',
     scriptName: '告别诗',
+    publisherName: '小鹿',
     sessionTime: '10:00',
     playerGap: 2,
     genderPreference: '不限',
@@ -76,6 +80,7 @@ export const mockGames: UrgentGame[] = [
   {
     id: 'g5',
     scriptName: '暗黑者',
+    publisherName: '阿凯',
     sessionTime: '20:00',
     playerGap: 4,
     genderPreference: '不限',
@@ -94,6 +99,7 @@ export const mockGames: UrgentGame[] = [
   {
     id: 'g6',
     scriptName: '来电',
+    publisherName: '小鹿',
     sessionTime: '16:00',
     playerGap: 2,
     genderPreference: '女',
@@ -112,6 +118,7 @@ export const mockGames: UrgentGame[] = [
   {
     id: 'g7',
     scriptName: '悬崖上的谋杀',
+    publisherName: '小敏',
     sessionTime: '19:00',
     playerGap: 3,
     genderPreference: '不限',
@@ -130,6 +137,7 @@ export const mockGames: UrgentGame[] = [
   {
     id: 'g8',
     scriptName: '与妻书',
+    publisherName: '阿凯',
     sessionTime: '14:00',
     playerGap: 1,
     genderPreference: '女',
@@ -148,6 +156,7 @@ export const mockGames: UrgentGame[] = [
   {
     id: 'g9',
     scriptName: '紫丁香',
+    publisherName: '小鹿',
     sessionTime: '20:00',
     playerGap: 2,
     genderPreference: '不限',
@@ -166,6 +175,7 @@ export const mockGames: UrgentGame[] = [
   {
     id: 'g10',
     scriptName: '兵临城下',
+    publisherName: '小敏',
     sessionTime: '13:00',
     playerGap: 2,
     genderPreference: '男',

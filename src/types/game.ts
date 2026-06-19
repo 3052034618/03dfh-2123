@@ -9,6 +9,7 @@ export type GameStatus = 'recruiting' | 'full' | 'expired';
 export interface UrgentGame {
   id: string;
   scriptName: string;
+  publisherName: string;
   sessionTime: string;
   playerGap: number;
   genderPreference: GenderPref;

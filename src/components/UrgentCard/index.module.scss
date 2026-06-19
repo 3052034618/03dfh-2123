@@ -20,7 +20,27 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: $spacing-sm;
+}
+
+.publisherRow {
+  display: flex;
+  align-items: center;
   margin-bottom: $spacing-md;
+  padding-bottom: $spacing-sm;
+  border-bottom: 1rpx dashed $color-divider;
+}
+
+.publisherLabel {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  margin-right: $spacing-sm;
+}
+
+.publisherName {
+  font-size: $font-size-sm;
+  color: $color-primary;
+  font-weight: $font-weight-medium;
 }
 
 .scriptName {

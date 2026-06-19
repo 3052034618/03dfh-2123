@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, Input, ScrollView, Switch } from '@tarojs/components';
 import Taro from '@tarojs/taro';
 import classnames from 'classnames';
@@ -24,7 +24,11 @@ const initialEnrollForm: EnrollFormState = {
 function EnrollPage() {
   const [selectedGameId, setSelectedGameId] = useState<string>('');
   const [enrollForm, setEnrollForm] = useState<EnrollFormState>(initialEnrollForm);
-  const { games, enrollments, addEnrollment, updateEnrollmentStatus } = useGameStore();
+  const { games, enrollments, addEnrollment, updateEnrollmentStatus, initStore } = useGameStore();
+
+  useEffect(() => {
+    initStore();
+  }, [initStore]);
 
   const recruitingGames = games.filter((g) => g.status === 'recruiting');
   const selectedGame = recruitingGames.find((g) => g.id === selectedGameId) || recruitingGames[0];
@@ -103,6 +107,10 @@ function EnrollPage() {
                 <View className={styles.typeTag}>
                   <Text className={styles.typeTagText}>{selectedGame.scriptType}</Text>
                 </View>
+              </View>
+              <View className={styles.publisherBox}>
+                <Text className={styles.publisherLabel}>发布人：</Text>
+                <Text className={styles.publisherName}>{selectedGame.publisherName}</Text>
               </View>
               <View className={styles.detailInfo}>
                 <View className={styles.detailRow}>

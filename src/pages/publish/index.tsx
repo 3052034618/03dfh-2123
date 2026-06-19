@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, Input, ScrollView, Picker, Switch, Textarea } from '@tarojs/components';
 import Taro from '@tarojs/taro';
 import classnames from 'classnames';
@@ -11,10 +11,12 @@ import styles from './index.module.scss';
 const SESSION_TIMES = ['10:00', '13:00', '14:00', '16:00', '19:00', '19:30', '20:00'];
 const SCRIPT_TYPES: ScriptType[] = ['推理', '恐怖', '情感', '欢乐', '阵营', '机制'];
 const GENDER_PREFS: GenderPref[] = ['男', '女', '不限'];
+const PUBLISHER_KEY = 'lz_publisher_name';
 
 interface FormState {
   sessionTime: string;
   scriptName: string;
+  publisherName: string;
   scriptType: ScriptType;
   playerGap: string;
   currentPlayers: string;
@@ -27,25 +29,38 @@ interface FormState {
   notes: string;
 }
 
-const initialForm: FormState = {
-  sessionTime: '',
-  scriptName: '',
-  scriptType: '推理',
-  playerGap: '',
-  currentPlayers: '',
-  genderPreference: '不限',
-  rolePreference: '',
-  carpoolPrice: '',
-  latestArrival: '',
-  duration: '',
-  isNewbieFriendly: false,
-  notes: '',
-};
+function getInitialForm(): FormState {
+  let savedPublisher = '';
+  try {
+    savedPublisher = (Taro.getStorageSync(PUBLISHER_KEY) as string) || '';
+  } catch {
+    savedPublisher = '';
+  }
+  return {
+    sessionTime: '',
+    scriptName: '',
+    publisherName: savedPublisher,
+    scriptType: '推理',
+    playerGap: '',
+    currentPlayers: '',
+    genderPreference: '不限',
+    rolePreference: '',
+    carpoolPrice: '',
+    latestArrival: '',
+    duration: '',
+    isNewbieFriendly: false,
+    notes: '',
+  };
+}
 
 function PublishPage() {
-  const [form, setForm] = useState<FormState>(initialForm);
+  const [form, setForm] = useState<FormState>(getInitialForm);
   const [showForm, setShowForm] = useState(false);
-  const { games, addGame } = useGameStore();
+  const { games, addGame, initStore } = useGameStore();
+
+  useEffect(() => {
+    initStore();
+  }, [initStore]);
 
   const updateForm = (field: keyof FormState, value: string | boolean) => {
     setForm((prev) => ({ ...prev, [field]: value }));
@@ -56,11 +71,21 @@ function PublishPage() {
       Taro.showToast({ title: '请填写场次和剧本名', icon: 'none' });
       return;
     }
+    if (!form.publisherName) {
+      Taro.showToast({ title: '请填写前台本名', icon: 'none' });
+      return;
+    }
+    try {
+      Taro.setStorageSync(PUBLISHER_KEY, form.publisherName);
+    } catch (err) {
+      console.error('[PublishPage] save publisher error', err);
+    }
     const playerGap = Number(form.playerGap) || 1;
     const currentPlayers = Number(form.currentPlayers) || 0;
     const newGame: UrgentGame = {
       id: `g${Date.now()}`,
       scriptName: form.scriptName,
+      publisherName: form.publisherName,
       sessionTime: form.sessionTime,
       playerGap,
       genderPreference: form.genderPreference,
@@ -77,7 +102,7 @@ function PublishPage() {
       createdAt: new Date().toISOString(),
     };
     addGame(newGame);
-    setForm(initialForm);
+    setForm((prev) => ({ ...getInitialForm(), publisherName: prev.publisherName }));
     setShowForm(false);
     console.info('[PublishPage] game created:', newGame.id);
     Taro.showToast({ title: '急招发布成功！', icon: 'success' });
@@ -131,6 +156,19 @@ function PublishPage() {
                   ))}
                 </View>
               </ScrollView>
+            </View>
+
+            <View className={styles.formSection}>
+              <Text className={styles.sectionTitle}>前台本名</Text>
+              <View className={styles.formField}>
+                <Text className={styles.fieldLabel}>您的本名</Text>
+                <Input
+                  className={styles.fieldInput}
+                  placeholder="如：小敏"
+                  value={form.publisherName}
+                  onInput={(e) => updateForm('publisherName', e.detail.value)}
+                />
+              </View>
             </View>
 
             <View className={styles.formSection}>
