@@ -1,0 +1,216 @@
+@use '@/styles/variables.scss' as *;
+
+.card {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-card;
+  margin-bottom: $spacing-md;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-lg;
+}
+
+.headerLeft {
+  flex: 1;
+  min-width: 0;
+}
+
+.scriptName {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  display: block;
+  @include text-ellipsis;
+  margin-bottom: $spacing-xs;
+}
+
+.sessionTime {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.countdown {
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $radius-md;
+  flex-shrink: 0;
+  margin-left: $spacing-md;
+}
+
+.countdownUrgent {
+  background: $color-urgent-bg;
+}
+
+.countdownWarning {
+  background: $color-warning-bg;
+}
+
+.countdownSafe {
+  background: $color-safe-bg;
+}
+
+.countdownExpired {
+  background: $color-unsuitable-bg;
+}
+
+.countdownText {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  font-variant-numeric: tabular-nums;
+}
+
+.countdownTextUrgent {
+  color: $color-error;
+}
+
+.countdownTextWarning {
+  color: $color-warning;
+}
+
+.countdownTextSafe {
+  color: $color-success;
+}
+
+.countdownTextExpired {
+  color: $color-text-disabled;
+}
+
+.statsRow {
+  display: flex;
+  gap: $spacing-xl;
+  margin-bottom: $spacing-lg;
+  padding-bottom: $spacing-lg;
+  border-bottom: 1rpx solid $color-divider;
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.statConfirmed {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-confirmed-text;
+}
+
+.statWaitlist {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-waitlist-text;
+}
+
+.statPending {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-pending-text;
+}
+
+.statLabel {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.playerList {
+  margin-top: $spacing-sm;
+}
+
+.playerItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-sm 0;
+  min-height: 64rpx;
+
+  &:not(:last-child) {
+    border-bottom: 1rpx solid $color-divider;
+  }
+}
+
+.playerInfo {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  flex: 1;
+  min-width: 0;
+}
+
+.playerName {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  font-weight: $font-weight-medium;
+  @include text-ellipsis;
+  max-width: 140rpx;
+}
+
+.playerStatus {
+  font-size: $font-size-xs;
+  padding: 2rpx 12rpx;
+  border-radius: $radius-xs;
+  white-space: nowrap;
+}
+
+.playerStatusConfirmed {
+  color: $color-confirmed-text;
+  background: $color-confirmed-bg;
+}
+
+.playerStatusWaitlist {
+  color: $color-waitlist-text;
+  background: $color-waitlist-bg;
+}
+
+.playerStatusPending {
+  color: $color-pending-text;
+  background: $color-pending-bg;
+}
+
+.playerStatusUnsuitable {
+  color: $color-unsuitable-text;
+  background: $color-unsuitable-bg;
+}
+
+.playerDistance {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.callBtn {
+  @include button-reset;
+  background: $color-primary;
+  border-radius: $radius-round;
+  padding: 8rpx 24rpx;
+  height: 56rpx;
+  flex-shrink: 0;
+  transition: all $transition-base;
+
+  &:active {
+    opacity: 0.8;
+    transform: scale(0.96);
+  }
+}
+
+.callBtnText {
+  font-size: $font-size-xs;
+  color: $color-text-white;
+  white-space: nowrap;
+}
+
+.remindBar {
+  margin-top: $spacing-md;
+  padding: $spacing-md;
+  background: $color-urgent-bg;
+  border-radius: $radius-sm;
+  border-left: 6rpx solid $color-error;
+}
+
+.remindText {
+  font-size: $font-size-sm;
+  color: $color-error;
+  font-weight: $font-weight-medium;
+}

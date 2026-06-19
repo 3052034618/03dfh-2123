@@ -1,0 +1,284 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+}
+
+.scrollView {
+  height: 100vh;
+}
+
+.gameSelector {
+  padding: $spacing-md $spacing-lg;
+  background: $color-bg-card;
+  box-shadow: $shadow-card;
+  margin-bottom: $spacing-md;
+}
+
+.gameScroll {
+  width: 100%;
+}
+
+.gameList {
+  @include scroll-x-container;
+  display: flex;
+  gap: $spacing-sm;
+}
+
+.gameTab {
+  @include scroll-x-item(auto);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $spacing-md $spacing-lg;
+  background: $color-bg-hover;
+  border-radius: $radius-md;
+  border: 2rpx solid transparent;
+  min-width: 160rpx;
+  transition: all $transition-base;
+
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+.gameTabActive {
+  background: $color-tag-bg;
+  border-color: $color-primary;
+}
+
+.gameTabText {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  font-weight: $font-weight-medium;
+  white-space: nowrap;
+  @include text-ellipsis;
+  max-width: 200rpx;
+}
+
+.gameTabTextActive {
+  color: $color-primary;
+}
+
+.gameTabGap {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  margin-top: $spacing-xs;
+  white-space: nowrap;
+}
+
+.gameTabGapActive {
+  color: $color-primary;
+}
+
+.detailCard {
+  margin: 0 $spacing-lg $spacing-md;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-card;
+}
+
+.detailHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.detailName {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  @include text-ellipsis;
+  max-width: 440rpx;
+}
+
+.typeTag {
+  background: $color-tag-bg;
+  border-radius: $radius-xs;
+  padding: 4rpx 16rpx;
+  flex-shrink: 0;
+}
+
+.typeTagText {
+  font-size: $font-size-xs;
+  color: $color-tag-text;
+  font-weight: $font-weight-medium;
+  white-space: nowrap;
+}
+
+.detailInfo {
+  margin-bottom: $spacing-md;
+}
+
+.detailRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-sm;
+}
+
+.detailLabel {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.detailValue {
+  font-size: $font-size-sm;
+  color: $color-text-primary;
+}
+
+.detailPrice {
+  font-size: $font-size-md;
+  color: $color-price;
+  font-weight: $font-weight-semibold;
+}
+
+.notesBox {
+  background: $color-bg-hover;
+  border-radius: $radius-sm;
+  padding: $spacing-md;
+  border-left: 6rpx solid $color-primary;
+}
+
+.notesLabel {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  display: block;
+  margin-bottom: $spacing-xs;
+}
+
+.notesText {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  @include text-ellipsis-multi(3);
+}
+
+.enrollForm {
+  margin: 0 $spacing-lg $spacing-md;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-card;
+}
+
+.formTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  display: block;
+  margin-bottom: $spacing-md;
+}
+
+.formField {
+  margin-bottom: $spacing-md;
+}
+
+.fieldLabel {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  display: block;
+  margin-bottom: $spacing-xs;
+}
+
+.fieldInput {
+  width: 100%;
+  height: 80rpx;
+  background: $color-bg-hover;
+  border-radius: $radius-sm;
+  padding: 0 $spacing-lg;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  box-sizing: border-box;
+}
+
+.distanceWrap {
+  display: flex;
+  align-items: center;
+  height: 80rpx;
+  background: $color-bg-hover;
+  border-radius: $radius-sm;
+  padding: 0 $spacing-lg;
+}
+
+.distanceInput {
+  flex: 1;
+  height: 80rpx;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+}
+
+.distanceSuffix {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  margin-left: $spacing-xs;
+  white-space: nowrap;
+}
+
+.switchRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+  min-height: 80rpx;
+}
+
+.submitBtn {
+  @include button-reset;
+  width: 100%;
+  height: $button-height-lg;
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  border-radius: $radius-button;
+  margin-top: $spacing-md;
+  transition: all $transition-base;
+
+  &:active {
+    opacity: 0.9;
+    transform: scale(0.98);
+  }
+}
+
+.submitBtnText {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-white;
+  white-space: nowrap;
+}
+
+.enrollList {
+  padding: 0 $spacing-lg $spacing-xl;
+}
+
+.listTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  display: block;
+  margin-bottom: $spacing-md;
+}
+
+.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-xl;
+}
+
+.emptyText {
+  font-size: $font-size-md;
+  color: $color-text-disabled;
+}
+
+.emptyPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120rpx 0;
+}
+
+.emptyPageText {
+  font-size: $font-size-md;
+  color: $color-text-disabled;
+}
